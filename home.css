@@ -49,12 +49,8 @@ h4{
   float: right;
 }
 .add {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-  padding: 32px 16px;
   font-size: 16px;
-  border-radius: 50%;
+  margin-right: 30px;
 }
 
 .add:hover {
@@ -89,6 +85,66 @@ footer {
   bottom: 0px;
 }
 
+
+/* Popup form add activity */
+
+#addActivityTitle{
+  font-size: 40px;
+  width: 50%;
+  display: block;
+  margin: 25px auto;
+}
+
+.close{
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 40px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.bg-form{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.addFormContent{
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+input{
+  width: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+.inline-input{
+  width: 100%;
+}
+
+.time{
+  display: inline;
+  width: 15%;
+}
+
+#btnSubmit{
+  margin-top: 30px;
+}
+
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
   nav, article {
@@ -96,3 +152,5 @@ footer {
     height: auto;
   }
 }
+
+

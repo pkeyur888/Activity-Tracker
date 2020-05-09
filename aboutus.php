@@ -6,14 +6,12 @@
     <link rel="stylesheet" href="aboutus.css">
     <title>Catagory</title>
 </head>
+
 <body>
-
-
-
-  <ul>
+<ul>
   <li><a class="active" href="login.php">Logout</a></li>
   <li><a href="catagory.php">Catagory</a></li>
-  <li><a href="Activity.php">Activity</a></li>
+  <li><a href="home.php">Activity</a></li>
 </ul>
 
 <section>
