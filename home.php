@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
-    <title>Catagory</title>
-</head>
-<body>
+    
+<?php
+require_once('views/header.php');
+
+?>
 
 
-
-  <ul>
-  <li><a class="active" href="login.php">Logout</a></li>
-  <li><a href="aboutus.php">About-Us</a></li>
-  <li><a href="catagory.php">Catagory</a></li>
-</ul>
-
-<section>
   <table>
     <h2>Activity</h2>
     <h4><button id="btnAddActivity" class="add" name="add_activity" onclick="addActivityForm()">Add Activity</button></h4>
@@ -67,26 +55,13 @@
     </td>
   </tr>
 </table>
-</section>
+
   
 
-<footer>
-  <p>Created 2020</p>
-</footer>
-
-<script>
-  document.getElementById('btnAddActivity').addEventListener('click',function (){
-    document.querySelector('.bg-form').style.display = 'flex';
-  });
-
-  document.querySelector('.close').addEventListener('click', function () {
-    document.querySelector('.bg-form').style.display = 'none';
-  });
-
-</script>
+<?php require_once('views/footer.php')  ?>
 
 
-</body>
-</html>
+
+
 
 
