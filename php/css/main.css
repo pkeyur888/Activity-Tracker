@@ -25,6 +25,16 @@ body {
     margin: 5px 0;
 }
 
+.add-category{
+    border: 1px solid grey;
+    min-height: 70px;
+    padding: 7px;
+}
+.category-listing{
+    border: 1px solid grey;
+    padding: 7px;
+    margin: 5px 0;
+}
 
 
 /* footer */

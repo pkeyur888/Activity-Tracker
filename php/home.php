@@ -49,7 +49,7 @@ require_once('views/header.php');
 
   <div class="activity-listing">
     <h4>Activities</h4>
-  <table id="example" class="display" style="width:100%">
+  <table id="activities" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -62,7 +62,7 @@ require_once('views/header.php');
         <tbody>
             <tr>
                 <td>Act 1</td>
-                <td>Description short...</td>
+                <td>Description short... Description short... </td>
                 <td>20/04/1995</td>
                 <td>3h 35m</td>
                 <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
