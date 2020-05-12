@@ -13,16 +13,23 @@ body {
 }
 
 
-/* register */
-
-.reg-col {
-    color: #ebeeef!important;
+.add-activity{
+    border: 1px solid grey;
+    min-height: 170px;
+    padding: 7px;
 }
+
+.activity-listing{
+    border: 1px solid grey;
+    padding: 7px;
+    margin: 5px 0;
+}
+
 
 
 /* footer */
 
-.page-container {
+.container {
     /* min-height: 98vh; */
     min-height: calc(100vh - 122px);
 }

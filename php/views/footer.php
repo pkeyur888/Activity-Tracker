@@ -8,15 +8,5 @@
 
 
 </body>
-<script>
-  document.getElementById('btnAddCatagory').addEventListener('click',function (){
-    document.querySelector('.bg-form').style.display = 'flex';
-  });
-
-  document.querySelector('.close').addEventListener('click', function () {
-    document.querySelector('.bg-form').style.display = 'none';
-  });
-
-</script>
 </html>
 

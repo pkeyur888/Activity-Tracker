@@ -3,58 +3,187 @@
 require_once('views/header.php');
 
 ?>
+  <div class="add-activity">
+    <h4>Add activity</h4>
+    <form>
+      <div class="">
+        <div class="col-md-6">
 
-
-  <table>
-    <h2>Activity</h2>
-    <h4><button id="btnAddActivity" class="add" name="add_activity" onclick="addActivityForm()">Add Activity</button></h4>
-
-  <div class="bg-form">
-    <div class="addFormContent">
-      <div class="close">+</div>
-
-      <form>
-        <lable id="addActivityTitle">Add Activity</lable>
-        <lable>Activity Name:</lable>
-        <input type="text" id="activityName" placeholder="Activity Name">
-
-        <lable>Discription:</lable>
-        <input type="textfield" id="activityDiscription">          
-        
-        <label for="actiityStart">Date:</label>
-        <input type="date" id="date" min="2000-01-01" max="2100-12-31" require>
-
-        <label>Duration:</label>
-        <div class="inline-input">
-        <label>Hours:</label>          
-          <input class="time" type="number" name="hours" id="hour" min="0" placeholder="Hours">
-          <label>Minutes:</label>
-          <input class="time" type="number" id="minute" min="0" max="60" placeholder="Minutes">
+          <label for="name" class="col-sm-4 col-form-label">Name</label>
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" id="name">
+          </div>
+          <div class="">
+              <label for="date" class="col-sm-4 col-form-label mt-2">Date</label>
+              <div class="col-sm-8 mt-2">
+                <input type="date"  class="form-control" id="date">
+              </div>
+          </div>
         </div>
-        
-        <button class="button" id="btnSubmit">Submit</button>
-      </form>
-    </div>
-  </div>
+        <div class="col-md-6">
+          <label for="description" class="col-sm-4 col-form-label">Description</label>
+          <div class="col-sm-8">
+            <textarea class="form-control" id="description" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="hours" class="col-sm-4 col-form-label">Duration: </label>
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" id="hours" placeholder="Hours"> 
+          </div>
+        </div>
 
-  <tr>
-    <th>Activity Name</th>
-    <th>Discription</th>
-    <th>Duration</th>
-    <th>Date</th>
-    <th>Action</th>
-  </tr>
-  <tr>
-    <td>Dance</td>
-    <td>Hip hop</td>
-    <td>5min</td>
-    <td>20/01/2020</td>
-    <td>
-      <button class="btnedit" name="btn_edit">Edit</button>  
-      <button class="btndelete" name="btn_delete">Delete</button>
-    </td>
-  </tr>
-</table>
+        <div class="col-md-6">
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" id="minutes" placeholder="Minutes"> 
+          </div>
+          <div class="col-sm-4">
+            <button type="submit" class="btn btn-primary">Add</button> 
+          </div>
+          
+        </div>
+      </div>
+    </form>
+  </div>
+  
+
+  <div class="activity-listing">
+    <h4>Activities</h4>
+  <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+            <tr>
+                <td>Act 1</td>
+                <td>Description short...</td>
+                <td>20/04/1995</td>
+                <td>3h 35m</td>
+                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Duration</th>
+              <th>Actions</th>
+            </tr>
+        </tfoot>
+    </table>
+  </div>
 
   
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V15</title>
+	<title>Activity tracker - Sign up</title>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -34,7 +34,7 @@
                     <button type="submit" class="btn btn-primary">Sign up</button>
                 </div>
                 <div class="form-group text-center">
-                    Already a member? <a href="login.php">Sign in from here</a> 
+                    Already a member? <a href="index.php">Sign in from here</a> 
                 </div>
             </form>
         </div>
