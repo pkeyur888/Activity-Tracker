@@ -5,6 +5,7 @@ require_once('db/conn.php');
 global $conn;
 require_once('db/fetch-data.php');
 $result=fetch_data();
+echo $_SESSION['userid'];
 
 ?>
   <div class="add-activity">
@@ -33,13 +34,13 @@ $result=fetch_data();
         <div class="col-md-6">
           <label for="hours" class="col-sm-4 col-form-label" >Duration: </label>
           <div class="col-sm-8">
-            <input type="text"  class="form-control" id="hours" name="hours" placeholder="Hours" require> 
+            <input type="number" min="0" class="form-control" id="hours" name="hours" placeholder="Hours" require> 
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="col-sm-8">
-            <input type="text"  class="form-control" id="minutes" name="minutes" placeholder="Minutes" require> 
+            <input type="number" max="59" min="0"  class="form-control" id="minutes" name="minutes" placeholder="Minutes" require> 
           </div>
           <div class="col-sm-4">
             <input type="submit" value="Add" name="submit" class="btn btn-primary" > 
@@ -65,6 +66,7 @@ $result=fetch_data();
         </thead>
         <tbody>
 
+<?php if(!empty($result)) {?>
         <?php for($i=0;$i<count($result);$i++): ?>
             <tr>
                 <td><?=$result[$i]['name'] ?></td>
@@ -74,6 +76,7 @@ $result=fetch_data();
                 <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
             </tr>
         <?php endfor; ?>
+        <?php } ?>
             
             
         
@@ -97,7 +100,7 @@ $result=fetch_data();
 <?php require_once('views/footer.php')  ?>
 <?php
 
-if($_POST["submit"]){
+if(isset($_POST["submit"]) && $_POST["submit"]){
 
         
 $name=$_POST['name'];
@@ -105,22 +108,21 @@ $description=$_POST["description"];
 $date=$_POST["date"];
 $hours=$_POST["hours"];
 $minutes=$_POST["minutes"];
-$userid=1;
+$userid=$_SESSION['userid'];
 $categoryid=1;
 $duration=$hours.'h '.$minutes.'m';
 
 
-
 $sql = "INSERT INTO `activities`(`userId`, `categoryId`, `name`, `description`, `date`, `duration`) VALUES ($userid,$categoryid,'$name','$description','$date','$duration')";
 
-//echo $sql;
-if ($conn->query($sql) ) {
-    echo "<script>alert('Data inserted')</script>";
-    header("Location:home.php");
-  } else {
-    echo "<script>alert('Problem to insert data try after some time')</script>";
-    header("Location:home.php");
-  }
+echo $sql;
+// if ($conn->query($sql) ) {
+//     echo "<script>alert('Data inserted')</script>";
+//     header("Location:home.php");
+//   } else {
+//     echo "<script>alert('Problem to insert data try after some time')</script>";
+//     header("Location:home.php");
+//   }
 
 
 }
