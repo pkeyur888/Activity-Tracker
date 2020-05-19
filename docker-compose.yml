@@ -44,3 +44,8 @@ services:
       - db
 
 # from PHP, connect to MySQL via the "db" hostname on port 3306
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - 8188:8080
