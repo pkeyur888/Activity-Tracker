@@ -14,34 +14,24 @@ services:
       - "9906:3306"
   web:
     image: php:7.2.2-apache
+    container_name: php_web
     depends_on:
       - db
     volumes:
       - ./php/:/var/www/html/
     ports:
-      - "8882:80"
+      - "8100:80"
     stdin_open: true
     tty: true
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    depends_on:
-      - db
-    links:
-      - db
-    # phpmyadmin port
-    ports:
-      - "3028:80"
-
-  flyway:
-    image: flyway/flyway
-    command: -url=jdbc:mysql://db:3306/activitytrackerdb?verifyServerCertificate=false&useSSL=false -user=root -password=secret -connectRetries=60 migrate
-    volumes:
-      - ./flyway/sql:/flyway/sql
-    depends_on:
-      - db
-    links:
-      - db
+  # flyway:
+  #   image: flyway/flyway
+  #   command: -url=jdbc:mysql://db:3306/activitytrackerdb?verifyServerCertificate=false&useSSL=false -user=root -password=secret -connectRetries=60 migrate
+  #   volumes:
+  #     - ./flyway/sql:/flyway/sql
+  #   depends_on:
+  #     - db
+  #   links:
+  #     - db
 
 # from PHP, connect to MySQL via the "db" hostname on port 3306
 
