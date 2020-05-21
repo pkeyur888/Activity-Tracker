@@ -5,12 +5,12 @@ require_once('db/conn.php');
 global $conn;
 require_once('db/fetch-data.php');
 $result=fetch_data();
-echo $_SESSION['userid'];
+//echo $_SESSION['userid'];
 
 ?>
   <div class="add-activity">
     <h4>Add activity</h4>
-    <form method="post" action="">
+    <form method="post" action="db/add.php">
       <div class="">
         <div class="col-md-6">
 
@@ -68,12 +68,18 @@ echo $_SESSION['userid'];
 
 <?php if(!empty($result)) {?>
         <?php for($i=0;$i<count($result);$i++): ?>
-            <tr>
+            <tr id="<?php echo $result[$i]['id'];?> ">
+            
                 <td><?=$result[$i]['name'] ?></td>
-                <td><?=$result[$i]['description'] ?></td>
+                <td id="<?php echo  $result[$i]['id']; ?>"><?=$result[$i]['description'] ?></td>
                 <td><?=$result[$i]['date'] ?></td>
                 <td><?=$result[$i]['duration'] ?></td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+                <td><button type="button" class="btn btn-xs btn-primary editBtn" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel" >Edit</button> 
+                <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn">Delete</button>
+                <!-- Button trigger modal -->
+
+
+                </td>
             </tr>
         <?php endfor; ?>
         <?php } ?>
@@ -95,34 +101,118 @@ echo $_SESSION['userid'];
     </table>
   </div>
 
-  
 
+<!-------------Delete Modal ----------------->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Acitivity</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Are you sure you want to delete activity?
+       <form method="post" action="db/delete.php">
+          <input type="hidden" name="deleteId" id="deleteId"   />
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" name="delete" class="btn btn-primary">Confirm Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>  
+<script>
+$(document).ready(function(){
+   $('.deleteBtn').on('click',function(){
+       $tr=$(this).closest('tr').attr('id');
+      //  var data =$("td:nth-child(2)").attri();
+      //  }).get();
+       console.log($tr);
+
+      $('#deleteId').val($tr);
+
+   }); 
+});
+</script>
+
+<!---------End Delete Model------------>
+
+
+
+<!--------Edit Model-------------------->
+<div class="modal fade" id="editModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Acitivity</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <!-- Are you sure you want to delete activity? -->
+       <form method="post" action="db/edit.php">
+       <div class="form-group">
+           <label for="name">Name</label>
+          <input type="text" class="form-control" name="editName" id="editName" placeholder="Enter Name">
+      </div>
+      <div class="form-group">
+           <label for="Date">Date</label>
+          <input type="date" class="form-control" name="editDate" id="editDate" placeholder="Enter Date">
+      </div>
+      <div class="form-group">
+           <label for="hours">Hours</label>
+          <input type="number" class="form-control" name="editHours" id="editHours" placeholder="Enter Hours">
+      </div>
+      <div class="form-group">
+           <label for="minutes">Minutes</label>
+          <input type="number" class="form-control" name="editMinutes" min=0 max=59 id="editMinutes" placeholder="Enter minutes">
+      </div>
+      <div class="form-group">
+      <label for="description">Description</label>
+        <textarea class="form-control" name="editDescription" id="editDescription" rows="3"></textarea>
+    </div>
+   
+       
+          <input type="text" name="edit-id" id="edit-id"   />
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" name="edit" class="btn btn-primary">Confirm Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+<script>
+$(document).ready(function(){
+   $('.editBtn').on('click',function(){
+     console.log("hello");
+       $tr=$(this).closest('tr').attr('id');
+       var data =$(this).closest('tr').children("td").map(function(){
+           return $(this).text();
+       }).get();
+      //  console.log(data[3].split('h'));
+      let hours=data[3].split(' ');
+       $('#edit-id').val($tr);
+      $('#editName').val(data[0]);
+      $('#editDescription').text(data[1]);
+      $('#editDate').val(data[2]);
+      $('#editHours').val(hours[0].replace('h',''));
+      $('#editMinutes').val(hours[1].replace('m',''));
+      console.log(hours[0]);
+
+
+      
+     
+   }); 
+});
+</script>
+<!---------End Delete Modal----------->
 <?php require_once('views/footer.php')  ?>
-<?php
-
-if(isset($_POST["submit"]) && $_POST["submit"]){
-
-        
-$name=$_POST['name'];
-$description=$_POST["description"];
-$date=$_POST["date"];
-$hours=$_POST["hours"];
-$minutes=$_POST["minutes"];
-$userid=$_SESSION['userid'];
-$categoryid=1;
-$duration=$hours.'h '.$minutes.'m';
-
-
-$sql = "INSERT INTO `activities`(`userId`, `categoryId`, `name`, `description`, `date`, `duration`) VALUES ($userid,$categoryid,'$name','$description','$date','$duration')";
-
-echo $sql;
-// if ($conn->query($sql) ) {
-//     echo "<script>alert('Data inserted')</script>";
-//     header("Location:home.php");
-//   } else {
-//     echo "<script>alert('Problem to insert data try after some time')</script>";
-//     header("Location:home.php");
-//   }
-
-
-}
