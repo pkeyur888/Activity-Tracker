@@ -14,7 +14,7 @@
   <script src="js/main.js" async></script>
   
 </head>
-<body >
+<body ></body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -31,7 +31,7 @@
       <li><a href="home.php">My Activity</a></li>
         <li><a href="catagory.php">Category</a></li>
         <li><a href="aboutus.php">About us</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>
   </div>
