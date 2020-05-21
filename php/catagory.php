@@ -1,11 +1,15 @@
     
 <?php
 require_once('views/header.php');
+require_once('db/conn.php');
+global $conn;
+require_once('db/fetch-data.php');
+$Catresult=fetch_category_data();
 
 ?>
   <div class="add-category">
     <h4>Add category</h4>
-    <form>
+    <form method="post">
       <div class="row">
         <div class="col-md-6">
 
@@ -33,38 +37,20 @@ require_once('views/header.php');
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
+        <?php if(!empty($Catresult)) {?>
+        <?php for($i=0;$i<count($Catresult);$i++): ?>
+            <tr id="<?php echo $Catresult[$i]['id'];?> ">
+            
+                <td><?=$Catresult[$i]['name'] ?></td>
+                <td><button type="button" class="btn btn-xs btn-primary editBtn" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel" >Edit</button> 
+                <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn">Delete</button>
+                <!-- Button trigger modal -->
+
+
+                </td>
             </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Cat 1</td>
-                <td><button class="btn btn-xs btn-primary">Edit</button> <button class="btn btn-xs btn-danger">Delete</button></td>
-            </tr>
+        <?php endfor; ?>
+        <?php } ?>
         </tbody>
         <tfoot>
             <tr>
