@@ -12,7 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if(isset($_SESSION['userid']))
 {
-  header("location:index.php");
+  //header("location:index.php");
   exit;
 }
 ?>
