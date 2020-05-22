@@ -40,7 +40,7 @@ $Catresult=fetch_category_data();
         <?php for($i=0;$i<count($Catresult);$i++): ?>
             <tr id="<?php echo $Catresult[$i]['id'];?> ">
             
-                <td><?=$Catresult[$i]['name'] ?></td>
+                <td><a href="specificcategory.php?categoryid=<?=$Catresult[$i]['id']?>"><?=$Catresult[$i]['name'] ?></td>
                 <td><button type="button" class="btn btn-xs btn-primary editBtn" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel" >Edit</button> 
                 <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn">Delete</button>
                 <!-- Button trigger modal -->

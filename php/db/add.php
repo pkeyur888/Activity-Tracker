@@ -9,7 +9,7 @@ $date=$_POST["date"];
 $hours=$_POST["hours"];
 $minutes=$_POST["minutes"];
 $userid=$_SESSION['userid'];
-$categoryid=1;
+$categoryid=$_POST['cateselect'];
 $duration=$hours.'h '.$minutes.'m';
 
 

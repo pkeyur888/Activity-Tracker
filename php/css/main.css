@@ -7,30 +7,30 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.center-div{
+.center-div {
     margin: 0 auto;
     width: 40%;
 }
 
-
-.add-activity{
+.add-activity {
     border: 1px solid grey;
-    min-height: 170px;
+    min-height: 200px;
     padding: 7px;
 }
 
-.activity-listing{
+.activity-listing {
     border: 1px solid grey;
     padding: 7px;
     margin: 5px 0;
 }
 
-.add-category{
+.add-category {
     border: 1px solid grey;
     min-height: 70px;
     padding: 7px;
 }
-.category-listing{
+
+.category-listing {
     border: 1px solid grey;
     padding: 7px;
     margin: 5px 0;
