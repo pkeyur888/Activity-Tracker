@@ -23,11 +23,12 @@
                 <input type="date" class="form-control" id="date" name="date" require>
               </div>
             </div>
-          
-          <!-- dropdown catagories -->
-          <div class="">
-            <div class="form-group">
-              <label for="sel1">Select Category (select one):</label>
+
+            <!-- dropdown catagories -->
+            <label for="sel1" class="col-sm-4 col-form-label">Select Category (select one):</label>
+
+            <div class="col-sm-8">
+
               <select class="form-control" name="cateselect">
                 <?php
                 $allcatnames = fetch_all_categories();
@@ -40,10 +41,9 @@
               </select>
             </div>
           </div>
-          </div>
 
           <div class="col-md-6">
-            
+
             <label for="description" class="col-sm-4 col-form-label">Description</label>
             <div class="col-sm-8">
               <textarea class="form-control" id="description" rows="3" name="description" require></textarea>
@@ -51,19 +51,18 @@
           </div>
           <div class="col-md-6">
             <label for="hours" class="col-sm-4 col-form-label">Duration: </label>
-            <div class="col-sm-8">
+          <div class="col-sm-8">
               <input type="number" min="0" class="form-control" id="hours" name="hours" placeholder="Hours" require>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="col-sm-8">
               <input type="number" max="59" min="0" class="form-control" id="minutes" name="minutes" placeholder="Minutes" require>
-            </div>
-            <div class="col-sm-4">
-              <input type="submit" value="Add" name="submit" class="btn btn-primary">
-            </div>
+              </div>
 
+          </div>
+          </div>
+<div class="row text-center margin-xs">
+          <div class="col-md-12 ">
+            
+              <input type="submit" value="Click to Add" name="submit" class="btn btn-primary">
+            </div>
           </div>
         </div>
       </form>
@@ -72,7 +71,8 @@
 
     <div class="activity-listing">
       <h4>Activities</h4>
-      <table id="activities" class="display" style="width:100%">
+      <div class="table-responsive" >
+      <table id="activities" class="display col-md-6 table" style="width:100%">
         <thead>
           <tr>
             <th>Name</th>
@@ -97,8 +97,8 @@
                     $catid = $result[$i]['categoryId'];
                     $catname = fetch_category_name($catid);
                     ?><?= $catname[0]['name'] ?></td>
-                <td><button type="button" class="btn btn-xs btn-primary editBtn" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel">Edit</button>
-                  <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn">Delete</button>
+                <td><button type="button" class="btn btn-xs btn-primary editBtn col-xs-10 col-md-4" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel">Edit</button>
+                  <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn col-xs-10 col-md-4">Delete</button>
                   <!-- Button trigger modal -->
 
 
@@ -123,6 +123,7 @@
           </tr>
         </tfoot>
       </table>
+    </div>
     </div>
 
 
