@@ -86,7 +86,7 @@ global $conn;
     {
         global $conn;  
         $userid = $_SESSION['userid'];         
-    $query_select="SELECT * FROM `activities` where categoryId = $catid ";
+    $query_select="SELECT * FROM `activities` where categoryId = $catid AND userId = $userid ";
     $res=$conn->query($query_select);
     $result=array();
     if($res && $res->num_rows > 0) 
@@ -96,6 +96,10 @@ global $conn;
             $result[] =$row;
            
         }
+        return $result;
+    }
+    else
+    {
         return $result;
     }
 

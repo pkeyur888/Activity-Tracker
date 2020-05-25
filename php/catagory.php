@@ -38,11 +38,11 @@
           <?php if (!empty($Catresult)) { ?>
             <?php for ($i = 0; $i < count($Catresult); $i++) : ?>
               <tr id="<?php echo $Catresult[$i]['id']; ?> ">
-                //
-                <td><button class="btn  btn-lg" data-toggle="modal" data-target="#myModal"><?= $Catresult[$i]['name'] ,$Catresult[$i]['id'] ?></button></td>
                 <?php $catid = $Catresult[$i]['id']; ?>
+
+                <td><button class="btn  btn-lg" data-toggle="modal" data-target="#myModal<?=$catid ?>"  onclick="fetch_category(<?php echo $Catresult[$i]['id'] ?>)"><?= $Catresult[$i]['name'] ?></button></td>
                 <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal fade" id="myModal<?=$catid ?>" role="dialog">
                   <div class="modal-dialog">
 
                     <!-- Modal content-->
@@ -51,14 +51,26 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Category include these Activities</h4>
                       </div>
+
                       <div class="modal-body">
-                        <h3>1st activity</h3>
-                        <h3>2nd activity</h3>
-                       
-<?=$catid ?>
-                       <?php $relatedActivities = fetch_category($catid);?>
-                       <?php endfor; ?>
+                       <?php $relatedActivities = fetch_category($catid);?>  
+                       <?php for ($j = 0; $j < count($relatedActivities); $j++) : ?>
+                   
+                     <?php if( $relatedActivities[$j]['id']  != $catid){ ?>
+                     <h3> <?=$j+1, ". ", $relatedActivities[$j]['name'];?></h3>
+                     <?php  }
+                       else{
+                         break;
+                       }?>
+                                         <?php endfor;
+                                         if(sizeof($relatedActivities) <=0)
+                                         { ?>
+                        <h3>No Activities in this Category.</h3>
+<?php
+                                         } ?>
+
                       </div>
+
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
@@ -72,14 +84,15 @@
 
 
 
-                ////
                 <td><button type="button" class="btn btn-xs btn-primary editBtn" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel">Edit</button>
                   <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn">Delete</button>
                   <!-- Button trigger modal -->
+                  <?php endfor; ?>
 
 
                 </td>
               </tr>
+
           <?php } ?>
         </tbody>
         <tfoot>

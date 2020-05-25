@@ -15,12 +15,12 @@
 
             <label for="name" class="col-sm-4 col-form-label">Name</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="name" name="name" require>
+              <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="">
               <label for="date" class="col-sm-4 col-form-label mt-2">Date</label>
               <div class="col-sm-8 mt-2">
-                <input type="date" class="form-control" id="date" name="date" require>
+                <input type="date" class="form-control" id="date" name="date" required>
               </div>
             </div>
 
@@ -46,14 +46,14 @@
 
             <label for="description" class="col-sm-4 col-form-label">Description</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="description" rows="3" name="description" require></textarea>
+              <textarea class="form-control" id="description" rows="3" name="description"></textarea>
             </div>
           </div>
           <div class="col-md-6">
             <label for="hours" class="col-sm-4 col-form-label">Duration: </label>
           <div class="col-sm-8">
-              <input type="number" min="0" class="form-control" id="hours" name="hours" placeholder="Hours" require>
-              <input type="number" max="59" min="0" class="form-control" id="minutes" name="minutes" placeholder="Minutes" require>
+              <input type="number" min="0" class="form-control" id="hours" name="hours" placeholder="Hours" required>
+              <input type="number" max="59" min="0" class="form-control" id="minutes" name="minutes" placeholder="Minutes" required>
               </div>
 
           </div>
