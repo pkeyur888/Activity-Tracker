@@ -205,6 +205,7 @@
 
               <!-- category selection edit --> 
               <div class="form-group">
+               <label for="description">Category</label>
                 <select class="form-control" name="editcatselect" id="editCategory">
                   <?php
                   $allcatnames = fetch_all_categories();
