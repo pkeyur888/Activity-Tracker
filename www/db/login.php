@@ -21,7 +21,7 @@ if( $num_row ==1 )
   }
   else
      {
-        header("location: ../index.php");
+        header("Location: ../index.php");
   }
  }
 

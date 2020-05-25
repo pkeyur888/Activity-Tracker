@@ -1,10 +1,5 @@
-
 <?php
 require_once('conn.php');
-global $conn;
-
-
-
 if(isset($_POST['submit']))
 {
     $username = trim($_POST['email']);
@@ -17,6 +12,7 @@ if(isset($_POST['submit']))
     {
         $_SESSION["registerDuplicateEmail"] =1;
         header("location : ../register.php");
+        exit;
     }
     else
     {
@@ -26,7 +22,7 @@ if(isset($_POST['submit']))
         $userId = mysqli_insert_id($conn);
         $_SESSION['userid']=$userId;
         header("location: ../home.php");
+        exit;
     }
 }
-
- ?>  
+ ?>
