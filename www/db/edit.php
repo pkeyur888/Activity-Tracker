@@ -8,10 +8,11 @@ require_once('conn.php');
         $desc=$_POST['editDescription'];
         $duration=$_POST['editHours'].'h '.$_POST['editMinutes'].'m';
         $id=$_POST['edit-id'];
-        echo $id;
+        $category = $_POST['editcatselect'];
+        //echo $id;
 
 
-        $sql = "UPDATE `activities` SET `categoryId`=1,`name`='$name',`description`='$desc',`date`='$date',`duration`='$duration' WHERE id=$id";
+        $sql = "UPDATE `activities` SET `categoryId`=$category,`name`='$name',`description`='$desc',`date`='$date',`duration`='$duration' WHERE id=$id";
         echo $sql;
 if ($conn->query($sql) === TRUE) {
   echo "Record updated successfully";

@@ -51,79 +51,79 @@
           </div>
           <div class="col-md-6">
             <label for="hours" class="col-sm-4 col-form-label">Duration: </label>
-          <div class="col-sm-8">
+            <div class="col-sm-8">
               <input type="number" min="0" class="form-control" id="hours" name="hours" placeholder="Hours" required>
               <input type="number" max="59" min="0" class="form-control" id="minutes" name="minutes" placeholder="Minutes" required>
-              </div>
+            </div>
 
           </div>
-          </div>
-<div class="row text-center margin-xs">
+        </div>
+        <div class="row text-center margin-xs">
           <div class="col-md-12 ">
-            
-              <input type="submit" value="Click to Add" name="submit" class="btn btn-primary">
-            </div>
+
+            <input type="submit" value="Click to Add" name="submit" class="btn btn-primary">
           </div>
         </div>
-      </form>
+    </div>
+    </form>
     </div>
 
 
     <div class="activity-listing">
       <h4>Activities</h4>
-      <div class="table-responsive" >
-      <table id="activities" class="display col-md-6 table" style="width:100%">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Duration</th>
-            <th>Category</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="table-responsive">
+        <table id="activities" class="display col-md-6 table" style="width:100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Duration</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
 
-          <?php if (!empty($result)) { ?>
-            <?php for ($i = 0; $i < count($result); $i++) : ?>
-              <tr id="<?php echo $result[$i]['id']; ?> ">
+            <?php if (!empty($result)) { ?>
+              <?php for ($i = 0; $i < count($result); $i++) : ?>
+                <tr id="<?php echo $result[$i]['id']; ?> ">
 
-                <td><?= $result[$i]['name'] ?></td>
-                <td id="<?php echo  $result[$i]['id']; ?>"><?= $result[$i]['description'] ?></td>
-                <td><?= $result[$i]['date'] ?></td>
-                <td><?= $result[$i]['duration'] ?></td>
-                <td><?php
-                    $catid = $result[$i]['categoryId'];
-                    $catname = fetch_category_name($catid);
-                    ?><?= $catname[0]['name'] ?></td>
-                <td><button type="button" class="btn btn-xs btn-primary editBtn col-xs-10 col-md-4" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel">Edit</button>
-                  <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn col-xs-10 col-md-4">Delete</button>
-                  <!-- Button trigger modal -->
-
-
-                </td>
-              </tr>
-            <?php endfor; ?>
-          <?php } ?>
+                  <td><?= $result[$i]['name'] ?></td>
+                  <td id="<?php echo  $result[$i]['id']; ?>"><?= $result[$i]['description'] ?></td>
+                  <td><?= $result[$i]['date'] ?></td>
+                  <td><?= $result[$i]['duration'] ?></td>
+                  <td><?php
+                      $catid = $result[$i]['categoryId'];
+                      $catname = fetch_category_name($catid);
+                      ?><?= $catname[0]['name'] ?></td>
+                  <td><button type="button" class="btn btn-xs btn-primary editBtn col-xs-10 col-md-4" name="editBtn" data-toggle="modal" id="editBtn" data-target="#editModel">Edit</button>
+                    <button type="button" data-toggle="modal" id="deleteBtn" data-target="#exampleModal" class="btn btn-xs btn-danger deleteBtn col-xs-10 col-md-4">Delete</button>
+                    <!-- Button trigger modal -->
 
 
+                  </td>
+                </tr>
+              <?php endfor; ?>
+            <?php } ?>
 
 
 
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Duration</th>
-            <th>Category</th>
-            <th>Actions</th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Duration</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
 
 
@@ -203,8 +203,22 @@
                 <textarea class="form-control" name="editDescription" id="editDescription" rows="3"></textarea>
               </div>
 
+              <!-- category selection edit --> 
+              <div class="form-group">
+               <label for="description">Category</label>
+                <select class="form-control" name="editcatselect" id="editCategory">
+                  <?php
+                  $allcatnames = fetch_all_categories();
+                  if (!empty($allcatnames)) { ?>
+                    <?php for ($i = 0; $i < count($allcatnames); $i++) : ?>
+                      <option value="<?= $allcatnames[$i]['id'] ?>"><?= $allcatnames[$i]['name'] ?></li>
+                      <?php endfor; ?>
+                    <?php } ?>
 
-              <input type="text" name="edit-id" id="edit-id" />
+                </select>
+              </div>
+
+              <input type="hidden" name="edit-id" id="edit-id" />
 
           </div>
           <div class="modal-footer">
@@ -222,12 +236,12 @@
     <script>
       $(document).ready(function() {
         $('.editBtn').on('click', function() {
-          console.log("hello");
+          //console.log("hello");
           $tr = $(this).closest('tr').attr('id');
           var data = $(this).closest('tr').children("td").map(function() {
             return $(this).text();
           }).get();
-          //  console.log(data[3].split('h'));
+          //console.log(data[4]);
           let hours = data[3].split(' ');
           $('#edit-id').val($tr);
           $('#editName').val(data[0]);
@@ -235,7 +249,8 @@
           $('#editDate').val(data[2]);
           $('#editHours').val(hours[0].replace('h', ''));
           $('#editMinutes').val(hours[1].replace('m', ''));
-          console.log(hours[0]);
+          $('select[name="editcatselect"]').find('option:contains('+data[4]+')').attr("selected",true);
+          //console.log(hours[0]);
 
 
 
