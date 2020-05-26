@@ -1,17 +1,10 @@
 <?php
 require_once('conn.php');
-
-//if(isset($_POST['submit']) && $_POST['submit']){
 if (isset($_POST['submit']) && !empty($_POST['submit'])) {
- 
     $name = $_POST['name'];
     $userid = $_SESSION['userid'];
-    // echo "session--".$userid;
-    // echo $name;
-
     $sql1 = "INSERT INTO `categories`(`userId`,`name`) VALUES ($userid,'$name')";
 
-    // echo $sql1;
     if ($conn->query($sql1)) {
         // echo "<script>alert('Data inserted')</script>";
         header("Location:../catagory.php");

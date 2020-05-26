@@ -8,10 +8,10 @@ require_once('conn.php');
         $sql = "DELETE FROM activities WHERE id=$id";
 
 if ($conn->query($sql) === TRUE) {
-  echo "Record deleted successfully";
+  // echo "Record deleted successfully";
   header('location:../home.php');
 } else {
-  echo "Error deleting record: " . $conn->error;
+  // echo "Error deleting record: " . $conn->error;
   header('location:../home.php');
 }
 

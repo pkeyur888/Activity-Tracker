@@ -37,5 +37,6 @@
   </div>
 </nav>
 <section class="container" >
+<?php //echo  'session '.$_SESSION['userid']; exit; ?>
   
 

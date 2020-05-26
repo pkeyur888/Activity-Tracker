@@ -15,12 +15,12 @@ $duration=$hours.'h '.$minutes.'m';
 
 $sql = "INSERT INTO `activities`(`userId`, `categoryId`, `name`, `description`, `date`, `duration`) VALUES ($userid,$categoryid,'$name','$description','$date','$duration')";
 
-echo $sql;
+// echo $sql;
 if ($conn->query($sql) ) {
-    echo "<script>alert('Data inserted')</script>";
+    // echo "<script>alert('Data inserted')</script>";
     header("Location:../home.php");
   } else {
-    echo "<script>alert('Problem to insert data try after some time')</script>";
+    // echo "<script>alert('Problem to insert data try after some time')</script>";
     header("Location:../home.php");
   }
 

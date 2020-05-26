@@ -1,9 +1,5 @@
 <?php
-
-if(session_status()== PHP_SESSION_NONE){
-    session_start();
-}
-
+session_start();
     global $conn;
    $CONFIG_MYSQL_DATABASE= "activitytrackerdb";
     $CONFIG_MYSQL_USER= 'root';
@@ -20,4 +16,3 @@ if ($conn->connect_errno) {
     echo("Error: " . $conn->connect_error . "\n");
     exit;
 }
-?>
