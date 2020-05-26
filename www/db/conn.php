@@ -1,4 +1,9 @@
 <?php
+
+if(session_status()== PHP_SESSION_NONE){
+    session_start();
+}
+
     global $conn;
    $CONFIG_MYSQL_DATABASE= "activitytrackerdb";
     $CONFIG_MYSQL_USER= 'root';

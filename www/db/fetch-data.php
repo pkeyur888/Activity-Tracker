@@ -1,10 +1,6 @@
-
 <?php
 require_once('conn.php');
 global $conn;
-
-
-
 function fetch_data()
 {
 
@@ -86,4 +82,3 @@ function fetch_category($catid)
 }
 
 
-?>   

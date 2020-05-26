@@ -4,7 +4,7 @@
     global $conn;
     require_once('db/fetch-data.php');
     $result = fetch_data();
-    //echo $_SESSION['userid'];
+    echo $_SESSION['userid'];
 
     ?>
     <div class="add-activity">
