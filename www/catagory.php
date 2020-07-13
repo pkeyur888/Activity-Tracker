@@ -1,6 +1,6 @@
 <?php
-require_once('views/header.php');
 require_once('db/conn.php');
+require_once('views/header.php');
 global $conn;
 require_once('db/fetch-data.php');
 $Catresult = fetch_category_data();

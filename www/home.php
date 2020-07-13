@@ -1,11 +1,8 @@
-    <?php
+<?php
+    require_once('db/conn.php'); 
     require_once('views/header.php');
-    require_once('db/conn.php');
-    global $conn;
     require_once('db/fetch-data.php');
     $result = fetch_data();
-    echo "session id = ".$_SESSION['userid'];
-
     ?>
     <div class="add-activity">
       <h4>Add activity</h4>

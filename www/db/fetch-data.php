@@ -1,15 +1,10 @@
-
 <?php
 require_once('conn.php');
-global $conn;
-
-
-
 function fetch_data()
 {
 
     global $conn;
-    $userid = $_SESSION['userid'];
+     $userid = $_SESSION['userid'];
     $query_select = "SELECT * FROM `activities` where userId = $userid ";
     $res = $conn->query($query_select);
     $result = array();
@@ -25,7 +20,8 @@ function fetch_category_data()
 {
 
     global $conn;
-    $userid = $_SESSION['userid'];
+    // echo "sessioon---".$_SESSION['userid'];
+     $userid = $_SESSION['userid'];
     $query_select = "SELECT * FROM `categories` where userId = $userid ";
     $res = $conn->query($query_select);
     $result = array();
@@ -55,7 +51,7 @@ function fetch_category_name($catid)
 function fetch_all_categories()
 {
     global $conn;
-    $userid = $_SESSION['userid'];
+     $userid = $_SESSION['userid'];
     $query_select = "SELECT * FROM `categories` where userId = $userid ";
     $res = $conn->query($query_select);
     $result = array();
@@ -71,7 +67,7 @@ function fetch_all_categories()
 function fetch_category($catid)
 {
     global $conn;
-    $userid = $_SESSION['userid'];
+     $userid = $_SESSION['userid'];
     $query_select = "SELECT * FROM `activities` where categoryId = $catid AND userId = $userid ";
     $res = $conn->query($query_select);
     $result = array();
@@ -86,4 +82,3 @@ function fetch_category($catid)
 }
 
 
-?>   

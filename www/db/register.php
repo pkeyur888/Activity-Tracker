@@ -20,6 +20,7 @@ if(isset($_POST['submit']))
         $query = "INSERT INTO `users`(`email`, `password`) VALUES ('$username','$password')";
         $result = mysqli_query($conn,$query)or die(mysqli_error());
         $userId = mysqli_insert_id($conn);
+    
         $_SESSION['userid']=$userId;
         header("location: ../home.php");
         exit;
